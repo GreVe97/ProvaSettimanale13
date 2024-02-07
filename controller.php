@@ -7,7 +7,6 @@ $target_dir = "uploads/";
 $cover = $target_dir .'defaultCover.jpg';
 
 if (!empty($_FILES['cover'])) {
-    var_dump($_FILES);
     if ($_FILES['cover']["type"] === 'image/png' || $_FILES['cover']["type"] === 'image/jpg'|| $_FILES['cover']["type"] === 'image/jpeg') {
         if ($_FILES['cover']["size"] < 4000000) {
             if (is_uploaded_file($_FILES['cover']["tmp_name"]) && $_FILES['cover']["error"] === UPLOAD_ERR_OK) {
@@ -25,9 +24,6 @@ if (!empty($_FILES['cover'])) {
         echo 'FileType non supportato';
     }
 }
-
-
-
 
 if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'delete') {
     removeBook($mysqli, $_REQUEST['id']);
@@ -49,23 +45,6 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'delete') {
     createBook($mysqli, $title, $genre, $author, $year, $cover);
 }
 
-
  exit(header('Location: http://localhost/ProvaSettimanale13')); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
