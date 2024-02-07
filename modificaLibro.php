@@ -21,7 +21,7 @@
     ?>
     <div class="container my-3">
         <h1 class="display-5 text-secondary-emphasis text-center">Modifica libro</h1>
-        <form method="post" action="controller.php?action=update&id=<?=$_REQUEST['id']?>" enctype="multipart/form-data" class="my-3">
+        <form method="post" action="controller.php?action=update&id=<?=$_REQUEST['id']?>&oldCover=<?=$book['cover']?>" enctype="multipart/form-data" class="my-3">
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text" value="<?= $book['title'] ?>" class="form-control" id="title" placeholder="Titolo..."
