@@ -10,14 +10,10 @@
 </head>
 
 <body>
-    <?php require_once 'config.php';
-    //var_dump($mysqli);
-    
+    <?php require_once 'config.php';   
     include_once('function.php');
     include_once('navbar.php');
-
     $books = getAllBooks($mysqli);
-
     ?>
 
     <div class="container my-3">
@@ -34,8 +30,8 @@
                             <div class="card-body d-flex flex-column align-items-start">
                                 <h5 class="card-title"><?=$book['title'] ?></h5>
                                 <p class="card-text badge rounded-pill bg-dark mb-2"><?=$book['genre'] ?></p>
-                                <p class="fs-4"><?=$book['author'] ?></p>
-                                <p class="fs-4"><?=$book['year']?></p>
+                                <p class="fs-5"><?=$book['author'] ?></p>
+                                <p class="fs-5"><?=$book['year']?></p>
                                 <div class="mt-auto">
                                     <a class="btn btn-outline-primary" href="modificaLibro.php?id=<?= $book['id'] ?>" role="button">Modifica</a>
                                     <a class="btn btn-outline-danger" href="controller.php?action=delete&id=<?= $book['id'] ?>" role="button">
