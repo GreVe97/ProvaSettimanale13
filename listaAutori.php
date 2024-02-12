@@ -50,7 +50,7 @@
                             <td>
                                 <a class="btn btn-danger" href="controller.php?action=deleteAuthor&id=<?= $author['id'] ?>"
                                     role="button"><i class="bi bi-trash3"></i></a>
-                                <a class="btn btn-warning" href="update.php?id=<?= $author['id'] ?>" role="button">M</a>
+                                <a class="btn btn-warning"  href="controller.php?action=updateAuthor&id=<?= $author['id'] ?>" role="button">M</a>
                             </td>
                         </tr>
                     <?php }

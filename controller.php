@@ -56,6 +56,16 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'addAuthor') {
     $lastName = strlen(trim(htmlspecialchars($_REQUEST['lastName']))) > 2 ? trim(htmlspecialchars($_REQUEST['lastName'])) : exit();   
     createAuthor($mysqli, $firstName, $lastName, $year);
     exit(header('Location: http://localhost/ProvaSettimanale13/listaAutori.php')); 
+}if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'deleteAuthor') {
+    removeAuthor($mysqli, $_REQUEST['id']);
+    exit(header('Location: http://localhost/ProvaSettimanale13/listaAutori.php'));
+}else if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'updateAuthor') {
+    $year = intval($_REQUEST['year'])<intval( date('Y')) ? intval($_REQUEST['year']) : exit(); 
+    $firstName = strlen(trim(htmlspecialchars($_REQUEST['firstName']))) > 0 ? trim(htmlspecialchars($_REQUEST['firstName'])) : exit();
+    $lastName = strlen(trim(htmlspecialchars($_REQUEST['lastName']))) > 2 ? trim(htmlspecialchars($_REQUEST['lastName'])) : exit();  
+    updateAuthor($mysqli, $_REQUEST['id'], $firstName, $lastName, $year);
+    exit(header('Location: http://localhost/ProvaSettimanale13/listaAutori.php')); 
+    
 }
 
 
