@@ -13,19 +13,18 @@ function getAllBooks($mysqli)
     return $result;
 }
 
-function createBook($mysqli, $title, $genre, $author, $year, $cover)
+function createBook($mysqli, $title, $genre, $author_id, $year, $cover)
 {
-    $nome = explode(" ", $author)[0];
-    $cognome = explode(" ", $author)[1];
+   
     $result = [];
-    $sql = "SELECT * FROM authors WHERE firstName = '$nome' AND lastName = '$cognome';";
+    $sql = "SELECT * FROM authors WHERE id = '$author_id';";
     $res = $mysqli->query($sql); 
     if ($res) { 
         while ($row = $res->fetch_assoc()) { 
             $result[] = $row;             
         }
     }
-    $author_id = $result[0]["id"];
+    $author = $result[0]["firstName"]. " ". $result[0]["lastName"];
     $sql = "INSERT INTO books (title, genre, author, cover, year, author_id) 
                 VALUES ('$title', '$genre', '$author', '$cover', '$year', '$author_id');";
     if (!$mysqli->query($sql)) {

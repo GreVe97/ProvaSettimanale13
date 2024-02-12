@@ -37,7 +37,7 @@
                     if ($authors) {
                         foreach ($authors as $key => $author) {
                             ?>
-                            <option value="<?=$author['firstName'] . " " . $author['lastName'] ?>"  class="form-control"> 
+                            <option value="<?=$author['id']?>"  class="form-control"> 
                                 <?= $author['firstName'] . " " . $author['lastName'] ?>
                             </option>
                         <?php }
