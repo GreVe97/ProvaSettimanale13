@@ -15,8 +15,19 @@ function getAllBooks($mysqli)
 
 function createBook($mysqli, $title, $genre, $author, $year, $cover)
 {
-    $sql = "INSERT INTO books (title, genre, author, cover, year) 
-                VALUES ('$title', '$genre', '$author', '$cover', '$year');";
+    $nome = explode(" ", $author)[0];
+    $cognome = explode(" ", $author)[1];
+    $result = [];
+    $sql = "SELECT * FROM authors WHERE firstName = '$nome' AND lastName = '$cognome';";
+    $res = $mysqli->query($sql); 
+    if ($res) { 
+        while ($row = $res->fetch_assoc()) { 
+            $result[] = $row;             
+        }
+    }
+    $author_id = $result[0]["id"];
+    $sql = "INSERT INTO books (title, genre, author, cover, year, author_id) 
+                VALUES ('$title', '$genre', '$author', '$cover', '$year', '$author_id');";
     if (!$mysqli->query($sql)) {
         echo ($mysqli->connect_error);
     } else {
@@ -51,4 +62,28 @@ function updateBook($mysqli,$id, $title, $genre, $author, $year, $cover) {
         else { echo 'Record aggiornato con successo!!!';}
 }
 
+//Extra
+
+function createAuthor($mysqli, $firstName, $lastName, $year){
+    $sql = "INSERT INTO authors (firstName, lastName, year) 
+                VALUES ('$firstName', '$lastName', '$year');";
+    if (!$mysqli->query($sql)) {
+        echo ($mysqli->connect_error);
+    } else {
+        echo 'Record aggiunto con successo!!!';
+    }
+}
+
+function getAllAuthors($mysqli)
+{
+    $result = [];
+    $sql = "SELECT * FROM authors;";
+    $res = $mysqli->query($sql); 
+    if ($res) { 
+        while ($row = $res->fetch_assoc()) { 
+            $result[] = $row;             
+        }
+    }
+    return $result;
+}
 ?>

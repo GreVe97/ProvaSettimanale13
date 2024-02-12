@@ -10,15 +10,15 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <body>
-    <?php require_once 'config.php';    
+    <?php require_once 'config.php';
     include_once('function.php');
     include_once('navbar.php');
-    $books = getAllBooks($mysqli);
+    $authors = getAllAuthors($mysqli);
     ?>
 
-<div class="container my-3">
-<h1 class="display-5 text-primary text-center">Aggiungi un nuovo libro</h1>
-        <form method="post" action="controller.php" enctype="multipart/form-data" class="my-3">
+    <div class="container my-3">
+        <h1 class="display-5 text-primary text-center">Aggiungi un nuovo libro</h1>
+        <form method="post" action="controller.php?action=createBook" enctype="multipart/form-data" class="my-3">
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="title" placeholder="Titolo..." name="title">
@@ -27,9 +27,23 @@
                 <label for="genre" class="form-label">Genere</label>
                 <input type="text" class="form-control" id="genre" placeholder="Genere..." name="genre">
             </div>
+
+
+
             <div class="mb-3">
                 <label for="author" class="form-label">Autore</label>
-                <input type="text" class="form-control" id="author" placeholder="Autore..." name="author">
+                <select class="form-select" aria-label="Default select example" id="author" name="author"  class="form-control">
+                    <?php
+                    if ($authors) {
+                        foreach ($authors as $key => $author) {
+                            ?>
+                            <option value="<?=$author['firstName'] . " " . $author['lastName'] ?>"  class="form-control"> 
+                                <?= $author['firstName'] . " " . $author['lastName'] ?>
+                            </option>
+                        <?php }
+                    } ?>
+                </select>
+
             </div>
             <div class="mb-3">
                 <label for="year" class="form-label">Anno di pubblicazione</label>
