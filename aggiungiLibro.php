@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="author" class="form-label">Autore</label>
-                <select class="form-select" aria-label="Default select example" id="author" name="author"  class="form-control">
+                <select class="form-select" aria-label="Default select example" id="author" name="author_id"  class="form-control">
                     <?php
                     if ($authors) {
                         foreach ($authors as $key => $author) {

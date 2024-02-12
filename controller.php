@@ -40,9 +40,9 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'delete') {
     $year = intval($_REQUEST['year'])<intval( date('Y')) ? intval($_REQUEST['year']) : exit(); 
     $title = strlen(trim(htmlspecialchars($_REQUEST['title']))) > 0 ? trim(htmlspecialchars($_REQUEST['title'])) : exit();
     $genre = strlen(trim(htmlspecialchars($_REQUEST['genre']))) > 2 ? trim(htmlspecialchars($_REQUEST['genre'])) : exit();
+    $author_id = $_REQUEST['author_id'];
    
-   
-    createBook($mysqli, $title, $genre, $author, $year, $cover);
+    createBook($mysqli, $title, $genre, $author_id, $year, $cover);
     exit(header('Location: http://localhost/ProvaSettimanale13')); 
 }
 
