@@ -19,13 +19,13 @@
         <h1 class="display-5 text-secondary-emphasis text-center">Modifica Autore</h1>
         <form method="post" action="controller.php?action=updateAuthor&id=<?=$_REQUEST['id']?>" enctype="multipart/form-data" class="my-3">
             <div class="mb-3">
-                <label for="title" class="form-label">Nome</label>
-                <input type="text" value="<?= $author['firstName'] ?>" class="form-control" id="title" placeholder="Nome..."
+                <label for="firstName" class="form-label">Nome</label>
+                <input type="text" value="<?= $author['firstName'] ?>" class="form-control" id="firstName" placeholder="Nome..."
                     name="firstName">
             </div>
             <div class="mb-3">
-                <label for="genre" class="form-label">Cognome</label>
-                <input type="text" value="<?= $author['lastName'] ?>" class="form-control" id="genre" placeholder="Cognome..."
+                <label for="lastName" class="form-label">Cognome</label>
+                <input type="text" value="<?= $author['lastName'] ?>" class="form-control" id="lastName" placeholder="Cognome..."
                     name="lastName">
             </div>
             <div class="mb-3">

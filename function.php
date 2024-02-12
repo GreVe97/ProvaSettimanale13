@@ -62,7 +62,6 @@ function updateBook($mysqli,$id, $title, $genre, $author, $year, $cover) {
 }
 
 //Extra
-
 function createAuthor($mysqli, $firstName, $lastName, $year){
     $sql = "INSERT INTO authors (firstName, lastName, year) 
                 VALUES ('$firstName', '$lastName', '$year');";
@@ -85,18 +84,16 @@ function getAllAuthors($mysqli)
     }
     return $result;
 }
-
 function removeAuthor($mysqli, $id) {
     if(!$mysqli->query('DELETE FROM authors WHERE id = ' . $id)) { echo($mysqli->connect_error); }
     else { echo 'Record eliminato con successo!!!';}
 }
-
-function updateAuthor($mysqli,$id, $firstName, $lastName,  $year) {
+function updateAuthor($mysqli,$id, $firstName, $lastName, $year) {
   
     $sql = "UPDATE authors SET 
                         firstName = '" . $firstName . "', 
                         lastName = '" . $lastName. "', 
-                        year = '" . $year. "',                              
+                        year = '" . $year. "'                             
                         WHERE id = " . $id;
         if(!$mysqli->query($sql)) { echo($mysqli->connect_error); }
         else { echo 'Record aggiornato con successo!!!';}
