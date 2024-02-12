@@ -102,4 +102,15 @@ function updateAuthor($mysqli,$id, $firstName, $lastName,  $year) {
         else { echo 'Record aggiornato con successo!!!';}
 }
 
+
+function getAuthorByID($mysqli) {     
+    $sql = "SELECT * FROM authors WHERE id = " . $_REQUEST['id']; 
+    $res = $mysqli->query($sql); 
+    if($res) { 
+        $result = $res->fetch_assoc();  
+    }
+    return $result;    
+} 
+
+
 ?>
